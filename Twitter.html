@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Trendr</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+
+</head>
+<link rel="stylesheet" type="text/css" href="static/css/base.css">
+<link rel="shortcut icon" type="image/x-icon" href="static/img/Favicon.png"/>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/"><img src ="static/img/Logo.png"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">Home</a></li>
+                <li class="active"><a href="/twitter">Twitter Feed</a></li>
+                <li><a href="/coinprice">Coin Prices</a></li>
+                <li><a href="/trending">Trending</a></li>
+                <li><a href="/login">Login</a></li>
+              </ul>
+            </div>
+        </div>
+    </nav>
+        <div class="container">
+            <div class="row">
+                    <h4>Tweets</h4>
+
+                    <form method="POST">
+                        <h6>Search</h6>
+                        <input name="text" placeholder="Search">
+                        <input type="submit">
+                    </form>
+                    <br>
+
+                    {% for i in d %}
+                        <ul>
+                            {% if i['retweeted_status']['full_text'] == null %}
+                            <li>{{i['user']['name']}}: {{i['full_text']}}</li>
+                            {% else %}
+                            <li>{{i['user']['name']}}: {{i['retweeted_status']['full_text']}}</li>
+                            {% endif %}
+                        </ul>
+                    {% endfor %}
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+        <footer class="container-fluid text-center">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h3>Contact Us</h3>
+                    <br>
+                    <h4>64 Zoo Lane Kingston 0285654124554</h4>
+                </div>
+                <div class="col-sm-4">
+                    <h3>Connect</h3>
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-google"></a>
+                    <a href="#" class="fa fa-linkedin"></a>
+                    <a href="#" class="fa fa-youtube"></a>
+                </div>
+                <div class="col-sm-4">
+                    <img src="static/img/Logo.png" class="icon">
+                </div>
+            </div>   
+        </footer>
+</body>
+</html>
